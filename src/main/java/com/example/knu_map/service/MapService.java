@@ -1,5 +1,6 @@
 package com.example.knu_map.service;
 
+import com.example.knu_map.domain.Category;
 import com.example.knu_map.dto.CrawledDataForm;
 import com.example.knu_map.entity.CrawledData;
 import com.example.knu_map.repository.CrawledDataRepository;
@@ -23,7 +24,7 @@ public class MapService {
         repository.save(crawledData);
     }
 
-    public List<CrawledData> getCrawledDataByCategory(String category) {
+    public List<CrawledData> getCrawledDataByCategory(Category category) {
         return repository.findByCategory(category);
     }
 

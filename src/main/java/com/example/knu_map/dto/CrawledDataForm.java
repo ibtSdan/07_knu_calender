@@ -1,30 +1,25 @@
 package com.example.knu_map.dto;
 
+import com.example.knu_map.domain.Category;
 import com.example.knu_map.entity.CrawledData;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Getter
-@Setter
+@Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class CrawledDataForm {
-    private Long id;
-    private String category;
+
+    private Category category;
     private String title;
     private Integer date;
     private String link;
 
-    public CrawledDataForm(Long id, String title, String category, Integer date, String link) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.date = date;
-        this.link = link;
-    }
-
     public CrawledData toEntity(){
-        return new CrawledData(id,title,category,date,link);
+        return new CrawledData(title,category,date,link);
     }
 }

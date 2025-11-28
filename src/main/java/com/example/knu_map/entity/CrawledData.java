@@ -1,31 +1,27 @@
 package com.example.knu_map.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.knu_map.domain.Category;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 
 public class CrawledData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-    private String category;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
     private String title;
     private Integer date;
     private String link;
 
-    public CrawledData(){
-    }
-
-    public CrawledData(Long id, String title, String category, Integer date, String link) {
-        this.id = id;
+    public CrawledData(String title, Category category, Integer date, String link) {
         this.title = title;
         this.category = category;
         this.date = date;
