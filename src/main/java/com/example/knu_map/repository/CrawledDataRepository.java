@@ -1,11 +1,12 @@
 package com.example.knu_map.repository;
 
 import com.example.knu_map.entity.CrawledData;
-import org.hibernate.mapping.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 public interface CrawledDataRepository extends JpaRepository<CrawledData, Long> {
-    ArrayList<CrawledData> findByCategory(String category);
+    List<CrawledData> findByCategory(String category);
 }

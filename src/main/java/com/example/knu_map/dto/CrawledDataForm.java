@@ -11,8 +11,8 @@ import lombok.ToString;
 
 public class CrawledDataForm {
     private Long id;
-    private String title;
     private String category;
+    private String title;
     private Integer date;
     private String link;
 
