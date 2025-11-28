@@ -1,5 +1,6 @@
 package com.example.knu_map.controller;
 
+import com.example.knu_map.common.ApiResponse;
 import com.example.knu_map.dto.CrawledDataForm;
 import com.example.knu_map.entity.CrawledData;
 import com.example.knu_map.repository.CrawledDataRepository;
@@ -26,14 +27,15 @@ public class MapController {
     }
 
     @PostMapping("/crawledData")
-    public String saveData(@RequestBody CrawledDataForm form){
+    public ApiResponse<Void> saveData(@RequestBody CrawledDataForm form){
         log.info("저장합니다.: "+form.getTitle());
         service.save(form);
-        return "성공적으로 저장되었습니다.";
+        return ApiResponse.success(null);
     }
 
     @GetMapping("/crawledData")
-    public List<CrawledData> getData(@RequestParam String category) {
-        return service.getCrawledDataByCategory(category);
+    public ApiResponse<List<CrawledData>> getData(@RequestParam String category) {
+        List<CrawledData> dataList = service.getCrawledDataByCategory(category);
+        return ApiResponse.success(dataList);
     }
 }
