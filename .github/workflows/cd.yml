@@ -26,7 +26,7 @@ jobs:
         run: |
           ssh -p ${{ secrets.EC2_PORT }} ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
 
-            cd ~/app/chat
+            cd ~/app/07_knu_calender
 
             echo "Pulling latest code..."
             git pull origin refactor
