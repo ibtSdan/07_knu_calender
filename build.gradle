@@ -35,8 +35,8 @@ dependencies {
 	testImplementation 'com.h2database:h2'
 }
 
-tasks.named('bootBuildImage') {
-	builder = 'paketobuildpacks/builder-jammy-base:latest'
+tasks.named('bootJar') {
+	mainClass.set("com.example.knu_map.KnuMapApplication")
 }
 
 tasks.named('test') {
