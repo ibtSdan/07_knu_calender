@@ -1,5 +1,6 @@
 package com.example.knu_map.controller;
 
+import com.example.knu_map.TestConfig;
 import com.example.knu_map.domain.Category;
 import com.example.knu_map.exception.ErrorCode;
 import org.junit.jupiter.api.Nested;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations = "classpath:validation.properties")
+@Import(TestConfig.class)
 @AutoConfigureMockMvc
 public class MapControllerTest {
 
