@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @Transactional
-@TestPropertySource("classpath:/validation.properties")
+@TestPropertySource(locations = "classpath:validation.properties")
 @AutoConfigureMockMvc
 public class MapControllerTest {
 
