@@ -30,14 +30,18 @@ jobs:
             echo "Pulling latest code..."
             git pull origin refactor
 
+            echo "HI"
+          
             echo "Building project..."
             ./gradlew clean bootJar
 
+            echo "HIHIHHII"
+          
             echo "Stopping old application..."
             pkill -f 'java -jar' || true
 
             echo "Starting new application..."
-            setsid java -jar build/libs/knu_map-0.0.1-SNAPSHOT.jar > app.log 2>&1 < /dev/null &
+            setsid java -jar build/libs/knu_map-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 
             echo "Deployment complete!"
           EOF
