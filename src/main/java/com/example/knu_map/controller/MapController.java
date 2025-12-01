@@ -6,6 +6,7 @@ import com.example.knu_map.dto.CrawledDataForm;
 import com.example.knu_map.entity.CrawledData;
 import com.example.knu_map.repository.CrawledDataRepository;
 import com.example.knu_map.service.MapService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class MapController {
     }
 
     @PostMapping("/crawledData")
-    public ApiResponse<String> saveData(@RequestBody CrawledDataForm form){
+    public ApiResponse<String> saveData(@RequestBody @Valid CrawledDataForm form){
         log.info("저장합니다.: "+form.getTitle());
         service.save(form);
         return ApiResponse.success(form.getTitle() + " 저장 완료");
