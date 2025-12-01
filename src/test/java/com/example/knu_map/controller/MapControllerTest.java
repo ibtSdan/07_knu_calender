@@ -1,6 +1,7 @@
 package com.example.knu_map.controller;
 
 import com.example.knu_map.domain.Category;
+import com.example.knu_map.exception.ErrorCode;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -66,7 +67,7 @@ public class MapControllerTest {
             }
             """;
 
-            expectBadRequestMessage(performPost(body), "카테고리를 선택해주세요.");
+            expectBadRequestMessage(performPost(body), ErrorCode.CATEGORY_REQUIRED.getMessage());
         }
 
         @Test
@@ -80,7 +81,7 @@ public class MapControllerTest {
             }
             """;
 
-            expectBadRequestMessage(performPost(body), "필드 타입을 확인해주세요.");
+            expectBadRequestMessage(performPost(body), ErrorCode.INVALID_JSON.getMessage());
         }
 
         @Test
@@ -93,7 +94,7 @@ public class MapControllerTest {
             }
             """;
 
-            expectBadRequestMessage(performPost(body), "제목을 입력해주세요.");
+            expectBadRequestMessage(performPost(body), ErrorCode.TITLE_REQUIRED.getMessage());
         }
 
         @Test
@@ -108,7 +109,7 @@ public class MapControllerTest {
             }
             """.formatted(longTitle);
 
-            expectBadRequestMessage(performPost(body), "제목은 최대 200자까지 가능합니다.");
+            expectBadRequestMessage(performPost(body), ErrorCode.TITLE_TOO_LONG.getMessage());
         }
 
         @Test
@@ -121,7 +122,7 @@ public class MapControllerTest {
             }
             """;
 
-            expectBadRequestMessage(performPost(body), "날짜를 입력해주세요.");
+            expectBadRequestMessage(performPost(body), ErrorCode.DATE_REQUIRED.getMessage());
         }
 
         @ParameterizedTest
@@ -136,7 +137,7 @@ public class MapControllerTest {
             }
             """.formatted(invalidDate);
 
-            expectBadRequestMessage(performPost(body), "날짜 형식이 올바르지 않습니다.");
+            expectBadRequestMessage(performPost(body), ErrorCode.DATE_INVALID.getMessage());
         }
 
         @Test
@@ -149,7 +150,7 @@ public class MapControllerTest {
             }
             """;
 
-            expectBadRequestMessage(performPost(body), "링크를 입력해주세요.");
+            expectBadRequestMessage(performPost(body), ErrorCode.LINK_REQUIRED.getMessage());
         }
 
         @Test
@@ -164,7 +165,7 @@ public class MapControllerTest {
             }
             """.formatted(longLink);
 
-            expectBadRequestMessage(performPost(body), "링크 길이는 최대 1000자까지 가능합니다.");
+            expectBadRequestMessage(performPost(body), ErrorCode.LINK_TOO_LONG.getMessage());
         }
 
         @ParameterizedTest
@@ -179,12 +180,12 @@ public class MapControllerTest {
             }
             """.formatted(invalidLink);
 
-            expectBadRequestMessage(performPost(body), "링크는 http:// 또는 https://로 시작해야 합니다.");
+            expectBadRequestMessage(performPost(body), ErrorCode.LINK_INVALID.getMessage());
         }
 
         @Test
         void 조회_잘못된_category() throws Exception {
-            expectBadRequestMessage(performGet("WRONG"), "요청한 category 값이 올바르지 않습니다. 가능한 값: " + Arrays.toString(Category.values()));
+            expectBadRequestMessage(performGet("WRONG"), ErrorCode.CATEGORY_INVALID.getMessage());
         }
     }
 
