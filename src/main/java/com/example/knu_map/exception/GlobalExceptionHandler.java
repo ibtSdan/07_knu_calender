@@ -16,13 +16,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse<Object>> handleValidationErrors(MethodArgumentNotValidException e) {
-        String message = String.format("%s: %s", e.getFieldError(), e.getMessage());
+        String message = e.getFieldError().getDefaultMessage();
         return ResponseEntity.badRequest().body(ApiResponse.fail(message));
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiResponse<Object>> handleMessageNotReadable(HttpMessageNotReadableException e) {
-        String message = "필드 타입을 확인해주세요. (" + e.getMessage() + ")";
+        String message = "필드 타입을 확인해주세요.";
         return ResponseEntity.badRequest().body(ApiResponse.fail(message));
     }
 
