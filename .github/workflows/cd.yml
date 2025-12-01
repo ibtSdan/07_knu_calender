@@ -33,9 +33,7 @@ jobs:
             echo "HI"
           
             echo "Building project..."
-            ./gradlew clean bootJar --no-daemon 2>&1 | tee build.log
-          
-            sleep 2
+            ./gradlew clean bootJar
 
             echo "HIHIHHII"
           
