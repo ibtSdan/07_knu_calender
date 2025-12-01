@@ -25,7 +25,6 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -p ${{ secrets.EC2_PORT }} ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-
             cd ~/app/07_knu_calender
 
             echo "Pulling latest code..."
@@ -41,4 +40,4 @@ jobs:
             nohup java -jar build/libs/knu_map-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 
             echo "Deployment complete!"
-EOF
+          EOF
