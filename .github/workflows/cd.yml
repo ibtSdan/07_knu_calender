@@ -32,7 +32,7 @@ jobs:
             git pull origin refactor
 
             echo "Building project..."
-            ./gradlew build
+            ./gradlew clean bootJar
 
             echo "Stopping old application..."
             pkill -f 'java -jar' || true
