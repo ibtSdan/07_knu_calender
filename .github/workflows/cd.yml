@@ -37,7 +37,7 @@ jobs:
             pkill -f 'java -jar' || true
 
             echo "Starting new application..."
-            nohup java -jar build/libs/knu_map-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+            setsid java -jar build/libs/knu_map-0.0.1-SNAPSHOT.jar > app.log 2>&1 < /dev/null &
 
             echo "Deployment complete!"
           EOF
