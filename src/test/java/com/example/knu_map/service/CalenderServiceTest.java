@@ -17,13 +17,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class MapServiceTest {
+public class CalenderServiceTest {
 
     @Mock
     private CrawledDataRepository repository;
 
     @InjectMocks
-    private MapService service;
+    private CalenderService service;
 
     @Test
     void save_호출시_repository_save_호출() {

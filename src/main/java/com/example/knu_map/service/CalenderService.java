@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MapService {
+public class CalenderService {
 
     private CrawledDataRepository repository;
 
     @Autowired
-    public MapService(CrawledDataRepository repository) {
+    public CalenderService(CrawledDataRepository repository) {
         this.repository = repository;
     }
 

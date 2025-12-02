@@ -4,14 +4,12 @@ import com.example.knu_map.common.ApiResponse;
 import com.example.knu_map.domain.Category;
 import com.example.knu_map.dto.CrawledDataForm;
 import com.example.knu_map.entity.CrawledData;
-import com.example.knu_map.repository.CrawledDataRepository;
-import com.example.knu_map.service.MapService;
+import com.example.knu_map.service.CalenderService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,12 +17,12 @@ import java.util.List;
 @CrossOrigin(allowedHeaders = "*")
 @RequestMapping("/knu")
 
-public class MapController {
+public class CalenderController {
 
-    private MapService service;
+    private CalenderService service;
 
     @Autowired
-    public MapController(MapService service) {
+    public CalenderController(CalenderService service) {
         this.service = service;
     }
 
