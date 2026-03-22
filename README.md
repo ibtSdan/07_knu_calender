@@ -1,3 +1,5 @@
+# 개인 리팩토링 위치 < refactor branch >
+
 # 07_knu_calender
 
 ### HAEDAL X APPDONG HACKATHON
